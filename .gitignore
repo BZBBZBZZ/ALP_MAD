@@ -1,0 +1,23 @@
+# macOS
+.DS_Store
+
+# Xcode user data
+xcuserdata/
+*.xcuserstate
+*.xcuserdatad/
+
+# Build artifacts
+build/
+DerivedData/
+
+# Swift Package Manager / local package artifacts
+.swiftpm/
+.build/
+
+# Xcode workspace state
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Firebase / Sensitive data
+GoogleService-Info.plist
