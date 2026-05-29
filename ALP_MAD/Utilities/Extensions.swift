@@ -7,26 +7,6 @@
 
 import SwiftUI
 
-// MARK: - View Extensions
-extension View {
-    func glassCard() -> some View {
-        self
-            .background(
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(AppTheme.bgCard.opacity(0.8))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(AppTheme.primaryColor.opacity(0.2), lineWidth: 1)
-                    )
-            )
-    }
-    
-    func cardShadow() -> some View {
-        self
-            .shadow(color: AppTheme.primaryColor.opacity(0.1), radius: 10, x: 0, y: 5)
-    }
-}
-
 // MARK: - Date Extensions
 extension Date {
     func toDateString() -> String {
