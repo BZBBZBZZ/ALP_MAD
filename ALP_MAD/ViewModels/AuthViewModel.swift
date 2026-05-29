@@ -10,17 +10,14 @@ import FirebaseAuth
 
 @Observable
 class AuthViewModel {
-    // MARK: - State
     var isLoggedIn: Bool = false
     var currentUserId: String?
     var isLoading: Bool = false
     var errorMessage: String?
     
-    // Login fields
     var loginEmail: String = ""
     var loginPassword: String = ""
     
-    // Register fields
     var registerUsername: String = ""
     var registerEmail: String = ""
     var registerPassword: String = ""
@@ -33,7 +30,6 @@ class AuthViewModel {
         checkAuthState()
     }
     
-    // MARK: - Auth State
     func checkAuthState() {
         if let uid = authService.currentUserId {
             self.currentUserId = uid
@@ -48,7 +44,6 @@ class AuthViewModel {
         } as? NSObjectProtocol
     }
     
-    // MARK: - Login
     func login() async {
         guard !loginEmail.isEmpty, !loginPassword.isEmpty else {
             errorMessage = "Please fill in all fields"
@@ -73,7 +68,6 @@ class AuthViewModel {
         isLoading = false
     }
     
-    // MARK: - Register
     func register() async {
         guard !registerUsername.isEmpty, !registerEmail.isEmpty, !registerPassword.isEmpty else {
             errorMessage = "Please fill in all fields"
@@ -91,7 +85,6 @@ class AuthViewModel {
         do {
             let uid = try await authService.register(email: registerEmail, password: registerPassword)
             
-            // Create user document in Firestore
             let newUser = UserModel(
                 id: uid,
                 username: registerUsername,
@@ -112,7 +105,6 @@ class AuthViewModel {
         isLoading = false
     }
     
-    // MARK: - Logout
     func logout() {
         do {
             try authService.logout()
@@ -124,7 +116,6 @@ class AuthViewModel {
         }
     }
     
-    // MARK: - Helpers
     private func clearLoginFields() {
         loginEmail = ""
         loginPassword = ""
