@@ -22,12 +22,10 @@ class HomeViewModel {
         userListener?.remove()
     }
     
-    // MARK: - Load User Data
     func loadUser(userId: String) {
         userListener?.remove()
         userListener = userService.addUserListener(userId: userId) { [weak self] user in
             Task { @MainActor in
-                // If user data is missing in Firestore, force logout
                 guard let u = user else {
                     try? AuthService.shared.logout()
                     return
@@ -39,7 +37,6 @@ class HomeViewModel {
         }
     }
     
-    // MARK: - Check Boss Status (for streak reset)
     func checkDailyBossStatus(userId: String) async {
         do {
             let bossOk = try await bossService.checkYesterdayBossResult(userId: userId)
