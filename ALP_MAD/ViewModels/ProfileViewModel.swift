@@ -18,7 +18,7 @@ class ProfileViewModel {
     var editUsername: String = ""
     var showEditUsername: Bool = false
     
-    var customTimerValue: Int = 10 
+    var customTimerValue: Int = 10 // For developer cheat
     
     private let userService = UserService.shared
     private var userListener: ListenerRegistration?
@@ -27,6 +27,7 @@ class ProfileViewModel {
         userListener?.remove()
     }
     
+    // MARK: - Load User
     func loadUser(userId: String) {
         userListener?.remove()
         userListener = userService.addUserListener(userId: userId) { [weak self] user in
@@ -40,6 +41,7 @@ class ProfileViewModel {
         }
     }
     
+    // MARK: - Update Username
     func updateUsername(userId: String) async {
         let trimmed = editUsername.trimmingCharacters(in: .whitespaces)
         guard !trimmed.isEmpty else {
@@ -66,6 +68,7 @@ class ProfileViewModel {
         isLoading = false
     }
     
+    // MARK: - Developer Cheats
     func cheatAddStreak(userId: String) async {
         do {
             if var u = user {
@@ -90,6 +93,7 @@ class ProfileViewModel {
     
     func cheatForceSpawnNewBoss(userId: String) async {
         do {
+            // Make the system think the current boss is from yesterday
             let db = Firestore.firestore()
             try await db.collection("bosses").document(userId).updateData(["spawnDate": "2020-01-01"])
         } catch { print("Cheat Error: \(error)") }

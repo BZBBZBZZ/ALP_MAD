@@ -8,7 +8,7 @@
 import Foundation
 
 struct UserModel: Codable, Identifiable {
-    var id: String
+    var id: String // Firebase Auth UID
     var username: String
     var email: String
     var level: Int = 1
@@ -25,6 +25,7 @@ struct UserModel: Codable, Identifiable {
     var createdAt: Date = Date()
     var isAdmin: Bool = false
     
+    // MARK: - Computed Properties
     
     var effectiveDamage: Int {
         let damageBuffCount = activeBuffs.filter { $0.type == .damage }.count

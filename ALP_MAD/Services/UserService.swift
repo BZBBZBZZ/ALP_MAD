@@ -15,11 +15,13 @@ class UserService {
     
     private init() {}
     
+    // MARK: - Create User
     func createUser(_ user: UserModel) async throws {
         let data = try Firestore.Encoder().encode(user)
         try await db.collection(collection).document(user.id).setData(data)
     }
     
+    // MARK: - Get User
     func getUser(userId: String) async throws -> UserModel {
         let doc = try await db.collection(collection).document(userId).getDocument()
         guard let data = doc.data() else {
@@ -28,21 +30,25 @@ class UserService {
         return try Firestore.Decoder().decode(UserModel.self, from: data)
     }
     
+    // MARK: - Update User
     func updateUser(_ user: UserModel) async throws {
         let data = try Firestore.Encoder().encode(user)
         try await db.collection(collection).document(user.id).setData(data, merge: true)
     }
     
+    // MARK: - Update Username
     func updateUsername(userId: String, username: String) async throws {
         try await db.collection(collection).document(userId).updateData([
             "username": username
         ])
     }
     
+    // MARK: - Update Stamina & EXP
     func addStaminaAndExp(userId: String, stamina: Int, exp: Int, user: inout UserModel) async throws {
         user.stamina = min(user.stamina + stamina, user.effectiveMaxStamina)
         user.exp += exp
         
+        // Check level up
         while user.exp >= user.expToNextLevel {
             user.exp -= user.expToNextLevel
             user.level += 1
@@ -53,6 +59,7 @@ class UserService {
         try await updateUser(user)
     }
     
+    // MARK: - Use Stamina
     func useStamina(userId: String, amount: Int, user: inout UserModel) async throws -> Bool {
         guard user.stamina >= amount else { return false }
         user.stamina -= amount
@@ -60,6 +67,7 @@ class UserService {
         return true
     }
     
+    // MARK: - Update Streak
     func updateStreak(user: inout UserModel, won: Bool) async throws -> BuffModel? {
         var newBuff: BuffModel? = nil
         
@@ -71,6 +79,7 @@ class UserService {
             user.lastBossDefeatDate = GameConstants.todayDateString()
             user.totalBossesDefeated += 1
             
+            // Check if streak is multiple of 5 for buff
             if user.dailyStreak % GameConstants.streakBuffInterval == 0 {
                 let buffType: BuffType = Bool.random() ? .damage : .stamina
                 let buff = BuffModel(
@@ -90,6 +99,7 @@ class UserService {
         return newBuff
     }
     
+    // MARK: - Listener
     func addUserListener(userId: String, handler: @escaping (UserModel?) -> Void) -> ListenerRegistration {
         return db.collection(collection).document(userId).addSnapshotListener { snapshot, error in
             guard let data = snapshot?.data(), error == nil else {
