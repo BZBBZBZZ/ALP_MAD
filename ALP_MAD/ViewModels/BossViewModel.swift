@@ -20,7 +20,6 @@ class BossViewModel {
     var newBuff: BuffModel?
     var showBuffAlert: Bool = false
     
-    // Timer
     var hoursLeft: Int = 0
     var minutesLeft: Int = 0
     var secondsLeft: Int = 0
@@ -52,7 +51,13 @@ class BossViewModel {
         }
         
         do {
-            let user = try await userService.getUser(userId: userId)
+            var fetchedUser = try await userService.getUser(userId: userId)
+        
+            let bossOk = try await bossService.checkYesterdayBossResult(userId: userId)
+            if !bossOk {
+                let _ = try await userService.updateStreak(user: &fetchedUser, won: false)
+            }
+            
             let boss = try await bossService.getOrSpawnBoss(userId: userId, currentDefeatCount: 0)
             self.boss = boss
         } catch let err as NSError where err.code == 404 {
@@ -60,7 +65,7 @@ class BossViewModel {
         } catch {
             errorMessage = error.localizedDescription
         }
-
+        
         bossListener?.remove()
         bossListener = bossService.addBossListener(userId: userId) { [weak self] boss in
             Task { @MainActor in
@@ -190,6 +195,11 @@ class BossViewModel {
             let db = Firestore.firestore()
             
             try? await db.collection("bosses").document(userId).updateData(["spawnDate": "2020-01-01"])
+            
+            let bossOk = try? await bossService.checkYesterdayBossResult(userId: userId)
+            if bossOk == false, var u = self.user {
+                let _ = try? await userService.updateStreak(user: &u, won: false)
+            }
             
             await loadData(userId: userId)
         }

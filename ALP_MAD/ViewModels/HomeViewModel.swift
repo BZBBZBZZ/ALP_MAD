@@ -40,10 +40,16 @@ class HomeViewModel {
     func checkDailyBossStatus(userId: String) async {
         do {
             let bossOk = try await bossService.checkYesterdayBossResult(userId: userId)
-            if !bossOk, var user = self.user {
-                // Streak reset — boss not defeated yesterday
-                let _ = try await userService.updateStreak(user: &user, won: false)
-                self.user = user
+            if !bossOk {
+                var currentUser = self.user
+                if currentUser == nil {
+                    currentUser = try await userService.getUser(userId: userId)
+                }
+                
+                if var u = currentUser {
+                    let _ = try await userService.updateStreak(user: &u, won: false)
+                    self.user = u
+                }
             }
         } catch {
             errorMessage = error.localizedDescription
