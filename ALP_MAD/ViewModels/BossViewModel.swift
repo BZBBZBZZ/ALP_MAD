@@ -35,11 +35,9 @@ class BossViewModel {
         cleanup()
     }
     
-    // MARK: - Load Data
     func loadData(userId: String) async {
         isLoading = true
         
-        // Listen to user
         userListener?.remove()
         userListener = userService.addUserListener(userId: userId) { [weak self] user in
             Task { @MainActor in
@@ -53,7 +51,6 @@ class BossViewModel {
             }
         }
         
-        // Load/spawn boss
         do {
             let user = try await userService.getUser(userId: userId)
             let boss = try await bossService.getOrSpawnBoss(userId: userId, currentDefeatCount: 0)
@@ -63,8 +60,7 @@ class BossViewModel {
         } catch {
             errorMessage = error.localizedDescription
         }
-        
-        // Listen to boss
+
         bossListener?.remove()
         bossListener = bossService.addBossListener(userId: userId) { [weak self] boss in
             Task { @MainActor in
@@ -79,7 +75,6 @@ class BossViewModel {
         startTimer()
     }
     
-    // MARK: - Attack Boss
     func attackBoss() async {
         guard let user = user, let boss = boss else { return }
         guard boss.isAlive else {
@@ -98,7 +93,6 @@ class BossViewModel {
             let userId = user.id
             let damage = user.effectiveDamage
             
-            // Use stamina
             var updatedUser = user
             let success = try await userService.useStamina(
                 userId: userId,
@@ -112,21 +106,16 @@ class BossViewModel {
                 return
             }
             
-            // Deal damage
             let updatedBoss = try await bossService.attackBoss(userId: userId, damage: damage)
             
-            // Show damage animation
             lastDamageDealt = damage
             showDamageAnimation = true
             
-            // Check if boss defeated
             if updatedBoss.isDefeated {
                 showDefeatAnimation = true
                 
-                // Update streak
                 let buff = try await userService.updateStreak(user: &updatedUser, won: true)
                 
-                // Add EXP bonus
                 let bonusExp = GameConstants.bossDefeatExpBonus(bossMaxHp: updatedBoss.maxHp)
                 try await userService.addStaminaAndExp(userId: userId, stamina: 0, exp: bonusExp, user: &updatedUser)
                 
@@ -144,13 +133,11 @@ class BossViewModel {
         
         isLoading = false
         
-        // Reset animation after delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             self?.showDamageAnimation = false
         }
     }
     
-    // MARK: - Timer
     func startTimer() {
         timer?.invalidate()
         updateTimeLeft()
@@ -164,7 +151,6 @@ class BossViewModel {
     private func updateTimeLeft() {
         let time = Date().timeUntilNextSpawn()
         
-        // Check if countdown just hit 0
         let wasRunning = hoursLeft > 0 || minutesLeft > 0 || secondsLeft > 0
         let isNowZero = time.hours == 0 && time.minutes == 0 && time.seconds == 0
         
@@ -186,32 +172,25 @@ class BossViewModel {
     private func handleRealTimerFinished() {
         guard let userId = user?.id else { return }
         Task {
-            // Check fail logic
             let bossOk = try? await bossService.checkYesterdayBossResult(userId: userId)
             if bossOk == false, var u = self.user {
                 let _ = try? await userService.updateStreak(user: &u, won: false)
             }
             
-            // Reload to spawn new boss and fetch latest data
             await loadData(userId: userId)
         }
     }
     
     private func handleCheatTimerFinished() {
-        // Clear the fake timer IMMEDIATELY so it doesn't trigger multiple times!
         GameConstants.fakeNextSpawnDate = nil
         
-        // Gunakan AuthService.shared.currentUserId sebagai fallback kalau self.user belum ke-load
         guard let userId = user?.id ?? AuthService.shared.currentUserId else { return }
         
         Task {
             let db = Firestore.firestore()
             
-            // Pindahkan bos hari ini ke masa lalu ("2020-01-01") agar memicu spawn boss baru
             try? await db.collection("bosses").document(userId).updateData(["spawnDate": "2020-01-01"])
             
-            // Reload to spawn new boss and fetch latest data
-            // (Logika pengurangan streak / pinalti dihilangkan khusus untuk fungsi cheat/Force Spawn)
             await loadData(userId: userId)
         }
     }

@@ -14,7 +14,6 @@ class ActivityViewModel {
     var isLoading: Bool = false
     var errorMessage: String?
     
-    // Add/Edit form state
     var activityName: String = ""
     var staminaReward: String = ""
     var expReward: String = ""
@@ -30,7 +29,6 @@ class ActivityViewModel {
         listener?.remove()
     }
     
-    // MARK: - Load Activities
     func loadActivities(userId: String) {
         listener?.remove()
         listener = activityService.addActivitiesListener(userId: userId) { [weak self] activities in
@@ -41,7 +39,6 @@ class ActivityViewModel {
         }
     }
     
-    // MARK: - Add Activity
     func addActivity(userId: String) async {
         guard !activityName.trimmingCharacters(in: .whitespaces).isEmpty else {
             errorMessage = "Activity name cannot be empty"
@@ -76,7 +73,6 @@ class ActivityViewModel {
         isLoading = false
     }
     
-    // MARK: - Edit Activity
     func updateActivity() async {
         guard var activity = editingActivity else { return }
         guard !activityName.trimmingCharacters(in: .whitespaces).isEmpty else {
@@ -109,15 +105,12 @@ class ActivityViewModel {
         isLoading = false
     }
     
-    // MARK: - Complete Activity
     func completeActivity(activity: ActivityModel, userId: String) async {
         errorMessage = nil
         
         do {
-            // Increment completion count
             try await activityService.completeActivity(activityId: activity.id)
             
-            // Add stamina & EXP to user
             var user = try await userService.getUser(userId: userId)
             try await userService.addStaminaAndExp(
                 userId: userId,
@@ -126,7 +119,6 @@ class ActivityViewModel {
                 user: &user
             )
             
-            // Sync to watch
             WatchConnectivityService.shared.sendUserData(user)
             WatchConnectivityService.shared.sendActivities(activities)
         } catch {
@@ -134,7 +126,6 @@ class ActivityViewModel {
         }
     }
     
-    // MARK: - Delete Activity
     func deleteActivity(activity: ActivityModel) async {
         do {
             try await activityService.deleteActivity(activityId: activity.id)
@@ -143,7 +134,6 @@ class ActivityViewModel {
         }
     }
     
-    // MARK: - Form Helpers
     func prepareEdit(activity: ActivityModel) {
         editingActivity = activity
         activityName = activity.name

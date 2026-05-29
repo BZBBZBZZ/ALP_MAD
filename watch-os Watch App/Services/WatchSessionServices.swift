@@ -13,7 +13,6 @@ import SwiftUI
 class WatchSessionService: NSObject, WCSessionDelegate {
     static let shared = WatchSessionService()
     
-    // Data received from iOS
     var stamina: Int = 0
     var maxStamina: Int = 100
     var level: Int = 1
@@ -40,7 +39,6 @@ class WatchSessionService: NSObject, WCSessionDelegate {
         }
     }
     
-    // MARK: - Actions to iOS
     func sendCompleteActivity(activityId: String) {
         WCSession.default.sendMessage(["action": "complete_activity", "activityId": activityId], replyHandler: { _ in
             print("Complete activity sent successfully")
@@ -57,7 +55,6 @@ class WatchSessionService: NSObject, WCSessionDelegate {
         }
     }
     
-    // MARK: - WCSessionDelegate
     
     nonisolated func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         Task { @MainActor in
@@ -70,7 +67,6 @@ class WatchSessionService: NSObject, WCSessionDelegate {
             if let isLoggedIn = applicationContext["isLoggedIn"] as? Bool {
                 self.isLoggedIn = isLoggedIn
                 if !isLoggedIn {
-                    // Reset all other statuses
                     self.activities = []
                     self.stamina = 0
                     self.damage = 10
@@ -108,7 +104,6 @@ class WatchSessionService: NSObject, WCSessionDelegate {
     }
     
     nonisolated func session(_ session: WCSession, didReceiveUserInfo userInfo: [String : Any] = [:]) {
-        // Fallback for previous implementation
         session.delegate?.session?(session, didReceiveApplicationContext: userInfo)
     }
 }

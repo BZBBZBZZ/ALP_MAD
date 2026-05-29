@@ -8,12 +8,12 @@
 import Foundation
 
 struct BossModel: Codable, Identifiable {
-    var id: String // same as userId
+    var id: String
     var userId: String
     var bossName: String
     var maxHp: Int
     var currentHp: Int
-    var spawnDate: String // "yyyy-MM-dd"
+    var spawnDate: String 
     var isDefeated: Bool = false
     var defeatCount: Int = 0
     

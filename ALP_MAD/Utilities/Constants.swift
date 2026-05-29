@@ -8,30 +8,24 @@
 import Foundation
 
 struct GameConstants {
-    // MARK: - Stamina
     static let baseMaxStamina: Int = 100
     static let attackStaminaCost: Int = 10
     
-    // MARK: - Boss
     static let baseBossHP: Int = 50
     static let bossHPIncrement: Int = 30
     static let bossSpawnHour: Int = 6
     static let bossSpawnMinute: Int = 00
     
-    // MARK: - Buff
-    static let buffValue: Double = 0.10 // 10%
-    static let streakBuffInterval: Int = 5 // every 5 streak
+    static let buffValue: Double = 0.10
+    static let streakBuffInterval: Int = 5
     
-    // MARK: - Level
     static let baseExpRequired: Double = 100
     static let expGrowthRate: Double = 1.5
     static let baseDamage: Double = 10
     static let damageGrowthRate: Double = 1.3
     
-    // MARK: - Developer Testing
     static var fakeNextSpawnDate: Date? = nil
     
-    // MARK: - Boss Names
     static let bossNames: [String] = [
         "Shadow Wraith", "Flame Golem", "Ice Sentinel",
         "Thunder Drake", "Void Stalker", "Crystal Behemoth",
@@ -42,7 +36,6 @@ struct GameConstants {
         "Doom Crawler", "Astral Horror"
     ]
     
-    // MARK: - Formulas
     
     static func expToNextLevel(for level: Int) -> Int {
         return Int(baseExpRequired * pow(expGrowthRate, Double(level - 1)))
@@ -70,7 +63,6 @@ struct GameConstants {
         let hour = calendar.component(.hour, from: now)
         let minute = calendar.component(.minute, from: now)
         
-        // If it's before the spawn hour/minute, it counts as "yesterday" in game time
         let isBeforeSpawn = (hour < bossSpawnHour) || (hour == bossSpawnHour && minute < bossSpawnMinute)
         let effectiveDate = isBeforeSpawn ? calendar.date(byAdding: .day, value: -1, to: now)! : now
         

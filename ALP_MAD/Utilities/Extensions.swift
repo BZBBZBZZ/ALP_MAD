@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Date Extensions
 extension Date {
     func toDateString() -> String {
         let formatter = DateFormatter()
@@ -43,7 +42,6 @@ extension Date {
     }
 }
 
-// MARK: - Number Formatting
 extension Int {
     var formatted: String {
         let formatter = NumberFormatter()

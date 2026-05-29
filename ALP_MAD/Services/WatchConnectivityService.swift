@@ -27,7 +27,6 @@ class WatchConnectivityService: NSObject, ObservableObject, WCSessionDelegate {
         session.activate()
     }
     
-    // MARK: - Send Data to Watch
     
     private var currentContext: [String: Any] = [:]
     
@@ -75,7 +74,6 @@ class WatchConnectivityService: NSObject, ObservableObject, WCSessionDelegate {
         ])
     }
     
-    // MARK: - WCSessionDelegate
     
     nonisolated func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
         print("WCSession activated: \(activationState.rawValue)")
@@ -123,7 +121,6 @@ class WatchConnectivityService: NSObject, ObservableObject, WCSessionDelegate {
         
         Task { @MainActor in
             guard let userId = AuthService.shared.currentUserId else {
-                // If user is absent (deleted info), tell watch to log out right away
                 self.sendAuthStatus(isLoggedIn: false)
                 replyHandler(["status": "error"])
                 return

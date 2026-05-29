@@ -15,13 +15,11 @@ class ActivityService {
     
     private init() {}
     
-    // MARK: - Create Activity
     func createActivity(_ activity: ActivityModel) async throws {
         let data = try Firestore.Encoder().encode(activity)
         try await db.collection(collection).document(activity.id).setData(data)
     }
     
-    // MARK: - Get Activities for User
     func getActivities(userId: String) async throws -> [ActivityModel] {
         let snapshot = try await db.collection(collection)
             .whereField("userId", isEqualTo: userId)
@@ -32,7 +30,6 @@ class ActivityService {
         }.sorted(by: { $0.createdAt < $1.createdAt })
     }
     
-    // MARK: - Update Activity (name, staminaReward, expReward only)
     func updateActivity(_ activity: ActivityModel) async throws {
         try await db.collection(collection).document(activity.id).updateData([
             "name": activity.name,
@@ -41,19 +38,16 @@ class ActivityService {
         ])
     }
     
-    // MARK: - Complete Activity (increment count)
     func completeActivity(activityId: String) async throws {
         try await db.collection(collection).document(activityId).updateData([
             "completionCount": FieldValue.increment(Int64(1))
         ])
     }
     
-    // MARK: - Delete Activity
     func deleteActivity(activityId: String) async throws {
         try await db.collection(collection).document(activityId).delete()
     }
     
-    // MARK: - Listener
     func addActivitiesListener(userId: String, handler: @escaping ([ActivityModel]) -> Void) -> ListenerRegistration {
         return db.collection(collection)
             .whereField("userId", isEqualTo: userId)
