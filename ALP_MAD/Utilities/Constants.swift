@@ -13,8 +13,8 @@ struct GameConstants {
     
     static let baseBossHP: Int = 50
     static let bossHPIncrement: Int = 30
-    static let bossSpawnHour: Int = 1
-    static let bossSpawnMinute: Int = 41
+    static let bossSpawnHour: Int = 6
+    static let bossSpawnMinute: Int = 00
     
     static let buffValue: Double = 0.10
     static let streakBuffInterval: Int = 5

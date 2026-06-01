@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		6712E7DB2FC73DF6009ADBBA /* watch-os Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 6712E7D12FC73DF6009ADBBA /* watch-os Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		6712E7E12FC73EFF009ADBBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6712E7E02FC73EFF009ADBBA /* GoogleService-Info.plist */; };
-		6712E7E22FC73EFF009ADBBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6712E7E02FC73EFF009ADBBA /* GoogleService-Info.plist */; };
 		6712E7E52FC73FFC009ADBBA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6712E7E42FC73FFC009ADBBA /* FirebaseAuth */; };
 		6712E7E72FC73FFC009ADBBA /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6712E7E62FC73FFC009ADBBA /* FirebaseCore */; };
 		6712E7E92FC73FFC009ADBBA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6712E7E82FC73FFC009ADBBA /* FirebaseFirestore */; };
+		AB55B30C2FCDED8A00CCB698 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */; };
+		AB55B30D2FCDED8A00CCB698 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */; };
+		AB55B30F2FCDEDB700CCB698 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */; };
+		AB55B3102FCDEDB700CCB698 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,9 +50,10 @@
 
 /* Begin PBXFileReference section */
 		6712E7D12FC73DF6009ADBBA /* watch-os Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watch-os Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6712E7E02FC73EFF009ADBBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		672CB2282FC6266300D28D0A /* ALP_MAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALP_MAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67AA300E2FC8BE08007C02EC /* ALP_MADTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALP_MADTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -106,7 +109,8 @@
 				6712E7D22FC73DF6009ADBBA /* watch-os Watch App */,
 				67AA300F2FC8BE08007C02EC /* ALP_MADTests */,
 				672CB2292FC6266300D28D0A /* Products */,
-				6712E7E02FC73EFF009ADBBA /* GoogleService-Info.plist */,
+				AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */,
+				AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -246,7 +250,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6712E7E22FC73EFF009ADBBA /* GoogleService-Info.plist in Resources */,
+				AB55B30C2FCDED8A00CCB698 /* GoogleService-Info.plist in Resources */,
+				AB55B30F2FCDEDB700CCB698 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +259,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6712E7E12FC73EFF009ADBBA /* GoogleService-Info.plist in Resources */,
+				AB55B30D2FCDED8A00CCB698 /* GoogleService-Info.plist in Resources */,
+				AB55B3102FCDEDB700CCB698 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
