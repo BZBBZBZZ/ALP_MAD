@@ -64,3 +64,7 @@ struct GradientButtonView: View {
         .scaleEffect(isDisabled ? 0.98 : 1.0)
     }
 }
+
+#Preview {
+    GradientButtonView(title: "Test Button", icon: "star.fill", isLoading: false, action: {})
+}

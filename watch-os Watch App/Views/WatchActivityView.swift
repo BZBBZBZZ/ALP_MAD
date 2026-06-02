@@ -81,3 +81,7 @@ struct WatchActivityView: View {
     }
 }
 
+
+#Preview {
+    WatchActivityView(viewModel: WatchViewModel())
+}

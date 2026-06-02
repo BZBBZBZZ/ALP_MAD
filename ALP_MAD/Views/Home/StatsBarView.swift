@@ -70,3 +70,7 @@ struct StatsBarView: View {
         }
     }
 }
+
+#Preview {
+    StatsBarView(user: UserModel(id: "test", username: "Player", email: "test@test.com", level: 1, exp: 50, expToNextLevel: 100, damage: 10, stamina: 80, maxStamina: 100, dailyStreak: 5, totalStreak: 10, activeBuffs: [], lastBossDefeatDate: nil, totalBossesDefeated: 0, createdAt: Date(), isAdmin: false))
+}

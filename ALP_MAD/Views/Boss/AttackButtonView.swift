@@ -99,3 +99,7 @@ struct AttackButtonView: View {
         }
     }
 }
+
+#Preview {
+    AttackButtonView(canAttack: true, stamina: 10, isLoading: false, isDefeated: false, action: {})
+}

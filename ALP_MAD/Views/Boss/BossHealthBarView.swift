@@ -43,3 +43,7 @@ struct BossHealthBarView: View {
         }
     }
 }
+
+#Preview {
+    BossHealthBarView(boss: BossModel(id: "1", userId: "test", bossName: "Slime", maxHp: 100, currentHp: 50, spawnDate: "2026-06-02", isDefeated: false, defeatCount: 0))
+}

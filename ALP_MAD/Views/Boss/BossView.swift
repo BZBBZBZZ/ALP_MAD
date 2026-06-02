@@ -156,3 +156,7 @@ struct BossView: View {
         .padding(.vertical, 8)
     }
 }
+
+#Preview {
+    BossView(userId: "test")
+}

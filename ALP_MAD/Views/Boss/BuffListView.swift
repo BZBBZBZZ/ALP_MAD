@@ -59,3 +59,9 @@ struct BuffListView: View {
         }
     }
 }
+
+#Preview {
+    BuffListView(buffs: [
+        BuffModel(id: "1", type: .damage, value: 0.10, grantedAtStreak: 5)
+    ])
+}

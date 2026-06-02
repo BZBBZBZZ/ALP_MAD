@@ -144,3 +144,12 @@ struct EditActivityView: View {
         .preferredColorScheme(.dark)
     }
 }
+
+#Preview {
+    let vm = ActivityViewModel()
+    // Mocking an activity to edit
+    vm.activityName = "Test"
+    vm.staminaReward = "10"
+    vm.expReward = "20"
+    return EditActivityView(viewModel: vm)
+}

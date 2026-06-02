@@ -82,3 +82,7 @@ struct HomeView: View {
         }
     }
 }
+
+#Preview {
+    HomeView(userId: "test")
+}

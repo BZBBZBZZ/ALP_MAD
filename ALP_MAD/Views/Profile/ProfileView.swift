@@ -195,3 +195,7 @@ struct ProfileView: View {
         }
     }
 }
+
+#Preview {
+    ProfileView(userId: "test", onLogout: {})
+}

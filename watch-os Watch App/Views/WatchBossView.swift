@@ -69,3 +69,7 @@ struct WatchBossView: View {
         .padding()
     }
 }
+
+#Preview {
+    WatchBossView(viewModel: WatchViewModel())
+}

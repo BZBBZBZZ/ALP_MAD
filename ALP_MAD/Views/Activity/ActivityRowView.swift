@@ -106,3 +106,12 @@ struct ActivityRowView: View {
         }
     }
 }
+
+#Preview {
+    ActivityRowView(
+        activity: ActivityModel(id: "1", userId: "test", name: "Test Activity", staminaReward: 10, expReward: 20, completionCount: 0, createdAt: Date()),
+        onComplete: {},
+        onEdit: {},
+        onDelete: {}
+    )
+}

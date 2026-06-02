@@ -163,3 +163,8 @@ struct RegisterView: View {
         }
     }
 }
+
+#Preview {
+    RegisterView()
+        .environment(AuthViewModel())
+}

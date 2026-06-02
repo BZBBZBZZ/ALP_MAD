@@ -30,11 +30,19 @@ class BossViewModel {
     private var userListener: ListenerRegistration?
     private var timer: Timer?
     
+    init() {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            self.user = UserModel(id: "test", username: "PreviewPlayer", email: "preview@test.com", level: 10, exp: 50, expToNextLevel: 100, damage: 10, stamina: 100, maxStamina: 100, dailyStreak: 5, totalStreak: 10, activeBuffs: [], lastBossDefeatDate: nil, totalBossesDefeated: 5, createdAt: Date(), isAdmin: false)
+            self.boss = BossModel(id: "1", userId: "test", bossName: "Slime", maxHp: 100, currentHp: 50, spawnDate: "2026-06-02", isDefeated: false, defeatCount: 0)
+        }
+    }
+    
     deinit {
         cleanup()
     }
     
     func loadData(userId: String) async {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" { return }
         isLoading = true
         
         userListener?.remove()

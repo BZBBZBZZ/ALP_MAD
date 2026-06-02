@@ -25,11 +25,21 @@ class ActivityViewModel {
     private let userService = UserService.shared
     private var listener: ListenerRegistration?
     
+    init() {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" {
+            self.activities = [
+                ActivityModel(id: "1", userId: "test", name: "Do 10 Pushups", staminaReward: 10, expReward: 20, completionCount: 0, createdAt: Date()),
+                ActivityModel(id: "2", userId: "test", name: "Read 10 pages", staminaReward: 15, expReward: 25, completionCount: 1, createdAt: Date())
+            ]
+        }
+    }
+    
     deinit {
         listener?.remove()
     }
     
     func loadActivities(userId: String) {
+        if ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1" { return }
         listener?.remove()
         listener = activityService.addActivitiesListener(userId: userId) { [weak self] activities in
             Task { @MainActor in

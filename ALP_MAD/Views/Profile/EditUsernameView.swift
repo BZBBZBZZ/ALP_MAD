@@ -93,3 +93,7 @@ struct EditUsernameView: View {
         .preferredColorScheme(.dark)
     }
 }
+
+#Preview {
+    EditUsernameView(viewModel: ProfileViewModel(), userId: "test")
+}

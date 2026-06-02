@@ -143,3 +143,7 @@ struct AddActivityView: View {
         .preferredColorScheme(.dark)
     }
 }
+
+#Preview {
+    AddActivityView(viewModel: ActivityViewModel(), userId: "test")
+}
