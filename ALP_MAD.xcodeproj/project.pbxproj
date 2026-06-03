@@ -25,7 +25,7 @@
 			remoteGlobalIDString = 6712E7D02FC73DF6009ADBBA;
 			remoteInfo = "watch-os Watch App";
 		};
-		67AA30122FC8BE08007C02EC /* PBXContainerItemProxy */ = {
+		AB1D786E2FD0237C00D60A50 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 672CB2202FC6266300D28D0A /* Project object */;
 			proxyType = 1;
@@ -51,7 +51,7 @@
 /* Begin PBXFileReference section */
 		6712E7D12FC73DF6009ADBBA /* watch-os Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "watch-os Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		672CB2282FC6266300D28D0A /* ALP_MAD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ALP_MAD.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		67AA300E2FC8BE08007C02EC /* ALP_MADTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALP_MADTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1D786A2FD0237C00D60A50 /* ALP_MADTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ALP_MADTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,9 +67,9 @@
 			path = ALP_MAD;
 			sourceTree = "<group>";
 		};
-		67AA300F2FC8BE08007C02EC /* ALP_MADTests */ = {
+		AB1D786B2FD0237C00D60A50 /* ALP_MADTest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = ALP_MADTests;
+			path = ALP_MADTest;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -92,7 +92,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67AA300B2FC8BE08007C02EC /* Frameworks */ = {
+		AB1D78672FD0237C00D60A50 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -107,7 +107,7 @@
 			children = (
 				672CB22A2FC6266300D28D0A /* ALP_MAD */,
 				6712E7D22FC73DF6009ADBBA /* watch-os Watch App */,
-				67AA300F2FC8BE08007C02EC /* ALP_MADTests */,
+				AB1D786B2FD0237C00D60A50 /* ALP_MADTest */,
 				672CB2292FC6266300D28D0A /* Products */,
 				AB55B30B2FCDED8A00CCB698 /* GoogleService-Info.plist */,
 				AB55B30E2FCDEDB700CCB698 /* GoogleService-Info.plist */,
@@ -119,7 +119,7 @@
 			children = (
 				672CB2282FC6266300D28D0A /* ALP_MAD.app */,
 				6712E7D12FC73DF6009ADBBA /* watch-os Watch App.app */,
-				67AA300E2FC8BE08007C02EC /* ALP_MADTests.xctest */,
+				AB1D786A2FD0237C00D60A50 /* ALP_MADTest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -176,27 +176,27 @@
 			productReference = 672CB2282FC6266300D28D0A /* ALP_MAD.app */;
 			productType = "com.apple.product-type.application";
 		};
-		67AA300D2FC8BE08007C02EC /* ALP_MADTests */ = {
+		AB1D78692FD0237C00D60A50 /* ALP_MADTest */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 67AA30162FC8BE08007C02EC /* Build configuration list for PBXNativeTarget "ALP_MADTests" */;
+			buildConfigurationList = AB1D78702FD0237C00D60A50 /* Build configuration list for PBXNativeTarget "ALP_MADTest" */;
 			buildPhases = (
-				67AA300A2FC8BE08007C02EC /* Sources */,
-				67AA300B2FC8BE08007C02EC /* Frameworks */,
-				67AA300C2FC8BE08007C02EC /* Resources */,
+				AB1D78662FD0237C00D60A50 /* Sources */,
+				AB1D78672FD0237C00D60A50 /* Frameworks */,
+				AB1D78682FD0237C00D60A50 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				67AA30132FC8BE08007C02EC /* PBXTargetDependency */,
+				AB1D786F2FD0237C00D60A50 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				67AA300F2FC8BE08007C02EC /* ALP_MADTests */,
+				AB1D786B2FD0237C00D60A50 /* ALP_MADTest */,
 			);
-			name = ALP_MADTests;
+			name = ALP_MADTest;
 			packageProductDependencies = (
 			);
-			productName = ALP_MADTests;
-			productReference = 67AA300E2FC8BE08007C02EC /* ALP_MADTests.xctest */;
+			productName = ALP_MADTest;
+			productReference = AB1D786A2FD0237C00D60A50 /* ALP_MADTest.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -215,7 +215,7 @@
 					672CB2272FC6266300D28D0A = {
 						CreatedOnToolsVersion = 26.5;
 					};
-					67AA300D2FC8BE08007C02EC = {
+					AB1D78692FD0237C00D60A50 = {
 						CreatedOnToolsVersion = 26.5;
 						TestTargetID = 672CB2272FC6266300D28D0A;
 					};
@@ -240,7 +240,7 @@
 			targets = (
 				672CB2272FC6266300D28D0A /* ALP_MAD */,
 				6712E7D02FC73DF6009ADBBA /* watch-os Watch App */,
-				67AA300D2FC8BE08007C02EC /* ALP_MADTests */,
+				AB1D78692FD0237C00D60A50 /* ALP_MADTest */,
 			);
 		};
 /* End PBXProject section */
@@ -264,7 +264,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67AA300C2FC8BE08007C02EC /* Resources */ = {
+		AB1D78682FD0237C00D60A50 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,7 +288,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		67AA300A2FC8BE08007C02EC /* Sources */ = {
+		AB1D78662FD0237C00D60A50 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,10 +303,10 @@
 			target = 6712E7D02FC73DF6009ADBBA /* watch-os Watch App */;
 			targetProxy = 6712E7D92FC73DF6009ADBBA /* PBXContainerItemProxy */;
 		};
-		67AA30132FC8BE08007C02EC /* PBXTargetDependency */ = {
+		AB1D786F2FD0237C00D60A50 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 672CB2272FC6266300D28D0A /* ALP_MAD */;
-			targetProxy = 67AA30122FC8BE08007C02EC /* PBXContainerItemProxy */;
+			targetProxy = AB1D786E2FD0237C00D60A50 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -562,18 +562,17 @@
 			};
 			name = Release;
 		};
-		67AA30142FC8BE08007C02EC /* Debug */ = {
+		AB1D78712FD0237C00D60A50 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3K6ASU3868;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nicho.ALP-MADTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.amadeus.ALP-MADTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -588,18 +587,17 @@
 			};
 			name = Debug;
 		};
-		67AA30152FC8BE08007C02EC /* Release */ = {
+		AB1D78722FD0237C00D60A50 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3K6ASU3868;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 26.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nicho.ALP-MADTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.amadeus.ALP-MADTest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
@@ -644,11 +642,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		67AA30162FC8BE08007C02EC /* Build configuration list for PBXNativeTarget "ALP_MADTests" */ = {
+		AB1D78702FD0237C00D60A50 /* Build configuration list for PBXNativeTarget "ALP_MADTest" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				67AA30142FC8BE08007C02EC /* Debug */,
-				67AA30152FC8BE08007C02EC /* Release */,
+				AB1D78712FD0237C00D60A50 /* Debug */,
+				AB1D78722FD0237C00D60A50 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
