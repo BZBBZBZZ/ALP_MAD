@@ -19,7 +19,6 @@ struct AddActivityView: View {
                 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Title Info
                         VStack(spacing: 8) {
                             Text("New Activity")
                                 .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -30,9 +29,8 @@ struct AddActivityView: View {
                         }
                         .padding(.top, 20)
                         
-                        // Form
+                        
                         VStack(spacing: 20) {
-                            // Name
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Activity Name")
                                     .font(.caption)
@@ -52,9 +50,8 @@ struct AddActivityView: View {
                                     )
                             }
                             
-                            // Rewards Grid
+                          
                             HStack(spacing: 16) {
-                                // Stamina Reward
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack(spacing: 4) {
                                         Image(systemName: "bolt.fill")
@@ -79,7 +76,7 @@ struct AddActivityView: View {
                                         )
                                 }
                                 
-                                // EXP Reward
+                               
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack(spacing: 4) {
                                         Image(systemName: "sparkles")

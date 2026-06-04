@@ -18,7 +18,6 @@ struct EditActivityView: View {
                 
                 ScrollView {
                     VStack(spacing: 24) {
-                        // Title Info
                         VStack(spacing: 8) {
                             Text("Edit Activity")
                                 .font(.system(size: 28, weight: .bold, design: .rounded))
@@ -31,9 +30,8 @@ struct EditActivityView: View {
                         }
                         .padding(.top, 20)
                         
-                        // Form
+                       
                         VStack(spacing: 20) {
-                            // Name
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Activity Name")
                                     .font(.caption)
@@ -53,9 +51,8 @@ struct EditActivityView: View {
                                     )
                             }
                             
-                            // Rewards Grid
+                            
                             HStack(spacing: 16) {
-                                // Stamina Reward
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack(spacing: 4) {
                                         Image(systemName: "bolt.fill")
@@ -80,7 +77,7 @@ struct EditActivityView: View {
                                         )
                                 }
                                 
-                                // EXP Reward
+                               
                                 VStack(alignment: .leading, spacing: 8) {
                                     HStack(spacing: 4) {
                                         Image(systemName: "sparkles")
@@ -147,7 +144,6 @@ struct EditActivityView: View {
 
 #Preview {
     let vm = ActivityViewModel()
-    // Mocking an activity to edit
     vm.activityName = "Test"
     vm.staminaReward = "10"
     vm.expReward = "20"

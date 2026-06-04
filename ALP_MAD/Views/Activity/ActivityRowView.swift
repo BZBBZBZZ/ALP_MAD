@@ -18,7 +18,6 @@ struct ActivityRowView: View {
     var body: some View {
         CardView(padding: 0) {
             HStack(spacing: 0) {
-                // Info Section
                 VStack(alignment: .leading, spacing: 8) {
                     Text(activity.name)
                         .font(.headline)
@@ -26,7 +25,6 @@ struct ActivityRowView: View {
                         .lineLimit(2)
                     
                     HStack(spacing: 12) {
-                        // Rewards
                         HStack(spacing: 4) {
                             Image(systemName: "bolt.fill")
                                 .font(.caption2)
@@ -48,7 +46,7 @@ struct ActivityRowView: View {
                         }
                     }
                     
-                    // Completion Count
+                 
                     HStack(spacing: 4) {
                         Image(systemName: "checkmark.circle.fill")
                             .font(.caption2)
@@ -63,7 +61,7 @@ struct ActivityRowView: View {
                 
                 Spacer()
                 
-                // Complete Button
+              
                 Button {
                     withAnimation(.spring(response: 0.3, dampingFraction: 0.5)) {
                         isPressed = true
