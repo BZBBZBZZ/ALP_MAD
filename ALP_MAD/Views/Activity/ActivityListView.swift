@@ -16,7 +16,6 @@ struct ActivityListView: View {
             AppTheme.bgDark.ignoresSafeArea()
             
             VStack(spacing: 0) {
-                // Header
                 HStack {
                     Text("Daily Activities")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
