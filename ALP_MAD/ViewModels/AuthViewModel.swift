@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 
 @Observable
 class AuthViewModel {
@@ -36,12 +35,12 @@ class AuthViewModel {
             self.isLoggedIn = true
         }
         
-        authListener = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+        authListener = authService.addAuthStateListener { [weak self] uid in
             Task { @MainActor in
-                self?.currentUserId = user?.uid
-                self?.isLoggedIn = user != nil
+                self?.currentUserId = uid
+                self?.isLoggedIn = uid != nil
             }
-        } as? NSObjectProtocol
+        }
     }
     
     func login() async {
