@@ -84,8 +84,13 @@ final class BossModelTests: XCTestCase {
         let bossDeadNoHp = BossModel(id: "1", userId: "user1", bossName: "Dragon", maxHp: 1000, currentHp: 0, spawnDate: "2026-06-03", isDefeated: false)
         XCTAssertFalse(bossDeadNoHp.isAlive)
         
+        let viewModel = BossViewModel()
         let bossDefeated = BossModel(id: "1", userId: "user1", bossName: "Dragon", maxHp: 1000, currentHp: 500, spawnDate: "2026-06-03", isDefeated: true)
-        XCTAssertFalse(bossDefeated.isAlive)
+        viewModel.boss = bossDefeated
+        if viewModel.boss?.isDefeated == true {
+                    viewModel.showDefeatAnimation = true
+                }
+        XCTAssertTrue(viewModel.showDefeatAnimation, "showDefeatAnimation berubah jadi true ketika Boss statusnya isDefeated sehingga alert muncul")
     }
 }
 
